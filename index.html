@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feliz cumpleaños, mi amor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fdeef3; --bg2:#f6d9f0; --ink:#5a1f45; --muted:#8a4d6e;
+    --pink:#c2407a; --gold:#b5577f; --card:#ffffff; --cardink:#5a1f45;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{background:radial-gradient(120% 80% at 50% 0%, var(--bg2) 0%, var(--bg) 65%);min-height:100vh}
+  main{max-width:460px;margin:0 auto;padding:36px 22px 48px;min-height:100vh;display:flex;flex-direction:column}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+  .brand{font-family:"DM Serif Display",serif;font-style:italic;color:var(--gold);font-size:18px}
+  .dots{display:flex;gap:6px}
+  .dot{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--muted);opacity:.6}
+  .dot.on{background:var(--pink);border-color:var(--pink);opacity:1}
+  .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 10px}
+  h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:44px;line-height:1.05;margin:0 0 16px}
+  h1 em{color:var(--pink)}
+  .lead{color:var(--muted);font-size:17px;line-height:1.55;margin:0 0 28px}
+  .card{background:var(--card);color:var(--cardink);border-radius:18px;padding:26px 24px 24px;position:relative;
+        box-shadow:0 16px 36px rgba(194,64,122,.18);transform:rotate(-1.2deg);animation:pop .7s cubic-bezier(.2,.9,.3,1.3) both}
+  .card::before{content:"";position:absolute;top:-12px;left:50%;width:90px;height:24px;margin-left:-45px;
+        background:rgba(244,167,198,.7);transform:rotate(2deg);border-radius:3px}
+  .card .num{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#b0396d;margin:0 0 12px}
+  .riddle{font-family:"DM Serif Display",serif;font-size:23px;line-height:1.38;margin:0;white-space:pre-line}
+  .hint{margin-top:26px;font-size:15px;color:var(--muted);line-height:1.5;display:flex;gap:10px;align-items:flex-start}
+  .hint svg{flex:none;margin-top:2px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;
+       background:var(--pink);color:#ffffff;font-weight:600;font-size:16px;border:0;cursor:pointer;text-decoration:none;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid rgba(90,31,69,.35)}
+  .actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+  .past{margin-top:36px}
+  .past h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 12px}
+  .past button{display:block;width:100%;text-align:left;background:rgba(255,255,255,.7);color:var(--ink);border:1px solid rgba(194,64,122,.22);
+       border-radius:12px;padding:14px 16px;font:inherit;font-size:15px;margin-bottom:8px;cursor:pointer;min-height:48px}
+  .final h1{font-size:52px}
+  .letter{font-size:18px;line-height:1.65;color:var(--ink);white-space:pre-line}
+  .sig{font-family:"DM Serif Display",serif;font-style:italic;color:var(--gold);font-size:26px;margin-top:18px}
+  .hidden{display:none}
+  .foot{margin-top:auto;padding-top:40px;font-size:13px;color:var(--muted);opacity:.7;text-align:center}
+  @keyframes pop{from{opacity:0;transform:translateY(24px) rotate(-4deg) scale(.96)}to{opacity:1;transform:rotate(-1.2deg)}}
+  .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+  .confetti i{position:absolute;top:-20px;width:9px;height:14px;border-radius:2px;animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+  /* ---------- Sección: mensaje de la familia ---------- */
+  .family{margin-top:52px;text-align:center}
+  .divider{display:flex;align-items:center;gap:14px;margin:0 0 26px;color:var(--pink)}
+  .divider span{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(194,64,122,.45),transparent)}
+  .divider svg{flex:none;animation:beat 1.6s ease-in-out infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.12)}}
+  .family h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:38px;line-height:1.1;margin:0 0 30px}
+  .family h2 em{color:var(--pink)}
+
+  .polaroid{position:relative;margin:0 6px 34px;background:#fff;padding:12px 12px 14px;border-radius:4px;
+            box-shadow:0 2px 4px rgba(90,31,69,.08),0 18px 40px rgba(194,64,122,.22);transform:rotate(1.6deg)}
+  .polaroid .tape{position:absolute;top:-11px;width:78px;height:24px;background:rgba(244,167,198,.75);border-radius:2px;z-index:2;
+                  box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  .polaroid .tape.tl{left:-14px;transform:rotate(-32deg)}
+  .polaroid .tape.tr{right:-14px;transform:rotate(30deg);background:rgba(217,184,242,.75)}
+  .photo{border-radius:2px;overflow:hidden;background:#f9e6ef}
+  .photo img{display:block;width:100%;height:auto}
+  .photo .ph{display:none;aspect-ratio:4/3;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+             color:var(--muted);font-size:14px;background:repeating-linear-gradient(45deg,#fbe9f1 0 12px,#f8e0ec 12px 24px)}
+  .photo.empty .ph{display:flex}
+  .polaroid figcaption{font-family:Caveat,cursive;font-size:27px;color:var(--ink);margin-top:10px;line-height:1.1}
+  .flower{position:absolute;color:var(--pink);z-index:3;filter:drop-shadow(0 3px 4px rgba(194,64,122,.25))}
+  .flower.f1{bottom:-20px;left:-16px;width:52px;height:52px;transform:rotate(-12deg)}
+  .flower.f2{bottom:22px;left:24px;width:30px;height:30px;color:#d9a3e6;transform:rotate(20deg)}
+  .flower.f3{top:-20px;right:30%;width:28px;height:28px;color:#f4a7c6}
+
+  .note{position:relative;margin:0;text-align:left;background:#fffafc;border-radius:16px;padding:34px 24px 26px;
+        box-shadow:0 14px 32px rgba(194,64,122,.14);transform:rotate(-.8deg);
+        background-image:repeating-linear-gradient(transparent 0 33px,rgba(194,64,122,.10) 33px 34px);background-position:0 26px}
+  .note::before{content:"";position:absolute;inset:8px;border:1.5px dashed rgba(194,64,122,.28);border-radius:11px;pointer-events:none}
+  .note .quote{position:absolute;top:-22px;left:22px;width:46px;height:46px;border-radius:50%;background:var(--pink);color:#fff;
+               display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(194,64,122,.35)}
+  .note p{font-size:17px;line-height:34px;margin:0;white-space:pre-line;color:var(--ink)}
+  .note footer{font-family:Caveat,cursive;font-size:28px;color:var(--pink);text-align:right;margin-top:14px;line-height:1.1}
+
+  .surprise{margin-top:48px;text-align:center;background:linear-gradient(135deg,#fff 0%,#fde3ee 100%);border-radius:20px;
+            padding:26px 22px;box-shadow:0 12px 30px rgba(194,64,122,.15);border:1px solid rgba(194,64,122,.15)}
+  .surprise p{margin:0 0 16px;color:var(--muted);font-size:16px;line-height:1.5}
+  .surprise .btn{gap:8px;box-shadow:0 8px 20px rgba(194,64,122,.35)}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  .polaroid.reveal.in{transform:rotate(1.6deg)}
+  .note.reveal.in{transform:rotate(-.8deg)}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.divider svg{animation:none}}
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <span class="brand">Para ti</span>
+    <div class="dots" id="dots" aria-label="Progreso"></div>
+  </div>
+
+  <!-- Clue view -->
+  <section id="clueView" class="hidden">
+    <p class="eyebrow" id="eyebrow"></p>
+    <h1 id="title"></h1>
+    <p class="lead" id="lead"></p>
+    <article class="card" id="card">
+      <p class="num" id="num"></p>
+      <p class="riddle" id="riddle"></p>
+    </article>
+    <p class="hint">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>
+      <span>Cuando encuentres el regalo, busca el papelito con el código QR y escanéalo con la cámara. Ahí te espera la próxima pista.</span>
+    </p>
+    <div class="past hidden" id="past">
+      <h2>Pistas anteriores</h2>
+      <div id="pastList"></div>
+    </div>
+  </section>
+
+  <!-- Final view -->
+  <section id="finalView" class="hidden final">
+    <p class="eyebrow">Lo lograste · 8 de 8</p>
+    <h1>Feliz cumpleaños, <em>mi amor</em></h1>
+    <p class="letter">Gracias por ser como eres y por hacerme tan feliz todos los días. ¡Ya llegaste a los 25! Es una etapa nueva y estoy bien orgulloso de ti, de todo lo que has logrado y de todo lo que viene.
+Disfruta tu día al máximo, que te lo mereces. Que este año te traiga muchas cosas bonitas, mucha paz y que se te dé todo lo que quieres.</p>
+    <p class="sig">Te amo,<br>Jessy</p>
+    <div class="actions"><button class="btn" id="again" type="button">Más confeti</button></div>
+
+    <!-- ===== MENSAJE DE LA FAMILIA =====
+         1) Guarda la foto como: fotos/familia.jpg
+         2) Pega el mensaje de la familia donde dice [ ... ]  -->
+    <section class="family" aria-labelledby="famTitle">
+      <div class="divider reveal" aria-hidden="true">
+        <span></span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+        <span></span>
+      </div>
+      <p class="eyebrow reveal">Alguien más quiere decirte algo</p>
+      <h2 class="reveal" id="famTitle">Con amor, <em>tu familia</em></h2>
+
+      <figure class="polaroid reveal">
+        <span class="tape tl"></span><span class="tape tr"></span>
+        <div class="photo">
+          <img src="fotos/familia.jpg" alt="Foto de familia" onerror="this.parentNode.classList.add('empty');this.remove()">
+          <span class="ph">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+            Aquí va la foto de familia
+          </span>
+        </div>
+        <figcaption>Las que más te quieren ♥</figcaption>
+        <svg class="flower f1" viewBox="0 0 40 40" aria-hidden="true"><use href="#flor"/></svg>
+        <svg class="flower f2" viewBox="0 0 40 40" aria-hidden="true"><use href="#flor"/></svg>
+        <svg class="flower f3" viewBox="0 0 40 40" aria-hidden="true"><use href="#flor"/></svg>
+      </figure>
+
+      <blockquote class="note reveal">
+        <span class="quote" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 11.5C4 7.9 6 5.3 9.5 4.5l.6 1.6C8.3 6.9 7.4 8.2 7.3 9.8H10v7H4v-5.3zm10 0c0-3.6 2-6.2 5.5-7l.6 1.6c-1.8.8-2.7 2.1-2.8 3.7H20v7h-6v-5.3z"/></svg>
+        </span>
+        <p>Feliz cumpleaños, ¡ya son 25! Parece que fue ayer cuando supimos que venías en camino, y mírate ahora: una mujer inteligente, fuerte y llena de amor, de la que estamos muy orgullosas. Gracias por cuidar siempre de los tuyos, por ser protectora, por estar pendiente aunque pasen días sin hablar y por apoyarnos en cada decisión. Hemos crecido juntas y, con todo lo que hemos vivido, nuestro lazo solo se ha hecho más fuerte.
+
+Hoy queremos recordarte que tú también mereces ser cuidada, consentida y feliz, y que no siempre tienes que ser la fuerte. Que la vida te devuelva toda la paz y el amor que das. Pase lo que pase y cumplas los años que cumplas, siempre vas a poder contar con nosotras, y para tu mamá siempre serás su princesa. Te amamos muchísimo. ❤️</p>
+        <footer>— Tu familia</footer>
+      </blockquote>
+    </section>
+
+    <!-- Enlace a la página de Jessy -->
+    <div class="surprise reveal">
+      <p>Y queda una última cosa…<br>solo de mí, para ti.</p>
+      <a class="btn" href="nosotros.html">
+        Abrir mi sorpresa
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Bad code -->
+  <section id="badView" class="hidden">
+    <p class="eyebrow">Hmm…</p>
+    <h1>Ese código no es de este juego</h1>
+    <p class="lead">Vuelve a escanear el QR del regalo o empieza desde el principio.</p>
+    <div class="actions"><a class="btn" href="#">Ir al inicio</a></div>
+  </section>
+
+  <p class="foot">Hecho con amor por bebo.</p>
+</main>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+<!-- Flor reutilizable para las decoraciones -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="flor" viewBox="0 0 40 40">
+    <g fill="currentColor">
+      <ellipse cx="20" cy="9" rx="7" ry="9"/>
+      <ellipse cx="20" cy="9" rx="7" ry="9" transform="rotate(72 20 20)"/>
+      <ellipse cx="20" cy="9" rx="7" ry="9" transform="rotate(144 20 20)"/>
+      <ellipse cx="20" cy="9" rx="7" ry="9" transform="rotate(216 20 20)"/>
+      <ellipse cx="20" cy="9" rx="7" ry="9" transform="rotate(288 20 20)"/>
+    </g>
+    <circle cx="20" cy="20" r="5.5" fill="#ffd36e"/>
+  </symbol>
+</svg>
+
+<script>
+  // Each QR code opens the page with one of these hash codes.
+  // Gift N's sticky note unlocks the clue for gift N+1. Gift 8 unlocks the final letter.
+  var CLUES = [
+    { code:"",              riddle:"Tengo brazos pero no abrazo,\ntengo espalda pero no camino.\nDespués de un día largo me buscas;\ndetrás de mí empieza tu destino." },
+    { code:"rosa-k7m2",     riddle:"De día me ignoras, de noche me buscas,\nguardo tus sueños sin decir nada.\nLo que quieres no está encima,\nsino donde los monstruos tienen su morada." },
+    { code:"luna-q4t9",     riddle:"Donde el espejo se nubla al amanecer,\nuna cajita tiene algo que ver." },
+    { code:"miel-x3p8",     riddle:"Sobre cuatro ruedas tengo un rincón\ndonde duermen papeles y uno que otro montón." },
+    { code:"sol-b6w1",      riddle:"Cuando el sol molesta, me bajas sin pensar,\ny antes de llegar, frente a mí te vienes a arreglar." },
+    { code:"coco-n2v5",     riddle:"Paleta en mano, pelota con hoyitos,\nnunca pises la cocina en el punto.\nLo que buscas viaja contigo\ncada vez que vamos a jugar juntos." },
+    { code:"brisa-j8r4",    riddle:"Sin brazos sostengo mangas,\nsin piernas cargo pantalones." },
+    { code:"cafe-h5s7",     riddle:"Hay un mar que no se mueve encima de los libros;\nahí navegamos para siempre tú y yo." },
+    { code:"final-z9d3",    final:true }
+  ];
+  var ORD = ["Primera","Segunda","Tercera","Cuarta","Quinta","Sexta","Séptima","Octava"];
+  var TOTAL = 8;
+
+  function $(id){return document.getElementById(id)}
+  function store(get,val){
+    try{ if(get) return parseInt(localStorage.getItem("hunt-max")||"0",10)||0;
+         localStorage.setItem("hunt-max",String(val)); }catch(e){ return 0; }
+  }
+  function dots(n){
+    var d=$("dots"); d.innerHTML="";
+    for(var i=0;i<TOTAL;i++){var s=document.createElement("span");s.className="dot"+(i<n?" on":"");d.appendChild(s);}
+    d.setAttribute("aria-label","Regalos encontrados: "+n+" de "+TOTAL);
+  }
+  function confetti(){
+    var c=$("confetti"), cols=["#f4a7c6","#c2407a","#d9b8f2","#ffd6e0","#f7c6a3"];
+    for(var i=0;i<80;i++){
+      var p=document.createElement("i");
+      p.style.left=Math.random()*100+"vw";
+      p.style.background=cols[i%cols.length];
+      p.style.animationDuration=(2.4+Math.random()*2.2)+"s";
+      p.style.animationDelay=(Math.random()*0.8)+"s";
+      c.appendChild(p);
+      setTimeout((function(el){return function(){el.remove()}})(p),5500);
+    }
+  }
+  // Las partes de la familia aparecen suavemente al bajar con el dedo
+  function revealOnScroll(){
+    var els=document.querySelectorAll(".reveal:not(.in)");
+    if(!("IntersectionObserver" in window)){ els.forEach(function(e){e.classList.add("in")}); return; }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+    },{threshold:.15});
+    els.forEach(function(e){io.observe(e)});
+  }
+  function show(idx, viaPast){
+    ["clueView","finalView","badView"].forEach(function(v){$(v).classList.add("hidden")});
+    window.scrollTo(0,0);
+    if(idx<0){ $("badView").classList.remove("hidden"); dots(store(true)); return; }
+    var max=Math.max(store(true), idx);
+    if(!viaPast) store(false,max);
+    dots(Math.min(idx,TOTAL));
+    var c=CLUES[idx];
+    if(c.final){ $("finalView").classList.remove("hidden"); confetti(); revealOnScroll(); return; }
+    $("clueView").classList.remove("hidden");
+    if(idx===0){
+      $("eyebrow").textContent="Hoy es tu día";
+      $("title").innerHTML="Feliz cumpleaños, <em>mi amor</em>";
+      $("lead").textContent="Te escondí 8 regalos entre la casa y el carro. Cada uno trae la pista para encontrar el próximo. Empieza aquí:";
+    } else {
+      $("eyebrow").textContent="Regalo "+idx+" de "+TOTAL+" encontrado";
+      $("title").innerHTML=idx<TOTAL-1?"¡Muy bien!<br><em>Sigue buscando</em>":"¡Ya casi!<br><em>Falta solo uno</em>";
+      $("lead").textContent="";
+    }
+    $("num").textContent=ORD[idx]+" pista";
+    $("riddle").textContent=c.riddle;
+    var card=$("card"); card.style.animation="none"; void card.offsetWidth; card.style.animation="";
+    // earlier clues
+    var list=$("pastList"); list.innerHTML="";
+    for(var i=0;i<idx;i++){
+      var b=document.createElement("button"); b.type="button";
+      b.textContent=ORD[i]+" pista";
+      b.onclick=(function(k){return function(){show(k,true)}})(i);
+      list.appendChild(b);
+    }
+    $("past").classList.toggle("hidden", idx===0);
+  }
+  function route(){
+    var h=(location.hash||"").replace(/^#/,"");
+    if(!h){ show(0); return; }
+    for(var i=1;i<CLUES.length;i++){ if(CLUES[i].code===h){ show(i); return; } }
+    show(-1);
+  }
+  $("again").onclick=confetti;
+  window.addEventListener("hashchange",route);
+  route();
+</script>
+</body>
+</html>
