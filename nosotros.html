@@ -139,7 +139,7 @@
       </button>
     </div>
     <div class="sdots" id="sdots"></div>
-    <figcaption id="cap">nosotros ♥</figcaption>
+    <figcaption id="cap">nosotros 💕🥰</figcaption>
 
     <svg class="doodle heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
     <svg class="doodle flower" viewBox="0 0 40 40" aria-hidden="true"><use href="#flor"/></svg>
@@ -192,11 +192,11 @@ Espero que te hayan gustado tus regalos y que sientas el esfuerzo que hice para 
   // Pon las fotos en la carpeta "fotos" y escribe aquí el nombre y una frasecita para cada una.
   // Puedes añadir o quitar líneas. Si una foto no existe, simplemente se salta.
   var FOTOS = [
-    { src:"fotos/nosotros1.png", texto:"nosotros ♥" },
-    { src:"fotos/nosotros2.png", texto:"[frase para la foto 2]" },
-    { src:"fotos/nosotros3.png", texto:"[frase para la foto 3]" },
-    { src:"fotos/nosotros4.png", texto:"[frase para la foto 4]" },
-    { src:"fotos/nosotros5.png", texto:"[frase para la foto 5]" }
+    { src:"fotos/nosotros1.png", texto:"nosotros 💕" },
+    { src:"fotos/nosotros2.png", texto:"😘" },
+    { src:"fotos/nosotros3.png", texto:"🫶" },
+    { src:"fotos/nosotros4.png", texto:"💖" },
+    { src:"fotos/nosotros5.png", texto:"🌹" }
   ];
   var SEGUNDOS_POR_FOTO = 5;
 
@@ -227,7 +227,7 @@ Espero que te hayan gustado tus regalos y que sientas el esfuerzo que hice para 
       go(cur,false,true);
     }
     function go(i,user,silent){
-      if(!slides.length){ cap.textContent="nosotros ♥"; return; }
+      if(!slides.length){ cap.textContent="nosotros 💕🥰"; return; }
       cur=(i+slides.length)%slides.length;
       slides.forEach(function(s,k){ s.classList.toggle("on",k===cur); });
       Array.prototype.forEach.call(dotsBox.children,function(d,k){ d.classList.toggle("on",k===cur); });
